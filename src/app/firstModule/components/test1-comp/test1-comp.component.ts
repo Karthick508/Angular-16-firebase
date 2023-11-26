@@ -14,7 +14,7 @@ export class Test1CompComponent implements OnInit{
 
   ngOnInit(){
     const button = document.addEventListener('click',()=>{
-      console.log("button clicked");
+      console.log("button clicked fire base");
     });
   }
 

@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FirstModuleComponentComponent } from './first-module-component/first-module-component.component';
+import { FirstModuleComponentComponent } from './components/first-module-component/first-module-component.component';
+import { userListResolverResolver } from './resolver/user-list-resolver.resolver';
 
 const routes: Routes = [
-  {path:"" ,component : FirstModuleComponentComponent}
+  {
+    path:"" ,
+    component : FirstModuleComponentComponent,
+    resolve : {
+      data : userListResolverResolver
+    }
+  }
 ];
 
 @NgModule({

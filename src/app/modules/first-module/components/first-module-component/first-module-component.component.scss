@@ -1,0 +1,14 @@
+p {
+    height: 100px;
+    width: 100px;
+    background: red;
+    color: white;
+    display: inline-block;
+}
+
+.container {
+    display: flex;
+    padding: 10px;
+    background-color: gray;
+    justify-content : center
+  }

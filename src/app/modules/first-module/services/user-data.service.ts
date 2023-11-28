@@ -1,11 +1,6 @@
-import { ResolveFn } from '@angular/router';
-import { of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { UserContacts } from '../resolver/user-list-resolver.resolver';
 
-
-export interface UserContacts{
-  name : string,
-  age : number
-}
 
 export const userContactsArray: UserContacts[] = [
   { name: 'John Doe', age: 25 },
@@ -20,8 +15,16 @@ export const userContactsArray: UserContacts[] = [
   { name: 'Emma Anderson', age: 31 },
 ];
 
-export const userListResolverResolver: ResolveFn<UserContacts[]> = (route, state) => {
-  console.log("resolver")
-  const abc = userContactsArray;
-  return of(abc);
-};
+@Injectable({
+  providedIn: 'root'
+})
+export class UserDataService {
+  
+
+  constructor() { }
+
+  getUserData(){
+    const data = userContactsArray;
+    return data;
+  }
+}

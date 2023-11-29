@@ -10,7 +10,7 @@ const routes: Routes = [
     component : FirstModuleComponentComponent,
     resolve : {
       data : userListResolverResolver
-    }
+    },
   },{
     path : "render",
     component : RendererTestCompComponent

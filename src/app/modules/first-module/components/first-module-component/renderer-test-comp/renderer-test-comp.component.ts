@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
-import { Observable, forkJoin, interval, map, of } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { Observable, Subscription, forkJoin, interval, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-renderer-test-comp',
   templateUrl: './renderer-test-comp.component.html',
   styleUrls: ['./renderer-test-comp.component.scss'],
 })
-export class RendererTestCompComponent {
+export class RendererTestCompComponent implements OnDestroy{
   $time!: Observable<Date>;
   $one!: Observable<String>;
   $two!: Observable<String>;
   $three!: Observable<String>;
   $four!: Observable<String>;
+  $forkJoinData !: Subscription;
+
 
   one!: string;
 
@@ -27,7 +29,7 @@ export class RendererTestCompComponent {
   }
 
   forkJoinTest() {
-    forkJoin([this.$one, this.$two, this.$three, this.$four]).subscribe({
+   this.$forkJoinData =  forkJoin([this.$one, this.$two, this.$three, this.$four]).subscribe({
       next: (value) => {
         this.one = value[0].toString();
       },
@@ -36,5 +38,9 @@ export class RendererTestCompComponent {
       },
       error: (error) => {},
     });
+  }
+
+  ngOnDestroy(){
+    this.$forkJoinData.unsubscribe();
   }
 }

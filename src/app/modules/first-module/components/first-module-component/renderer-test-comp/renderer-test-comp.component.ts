@@ -26,6 +26,22 @@ export class RendererTestCompComponent implements OnDestroy{
     this.$three = of('three');
     this.$four = of('four');
     this.forkJoinTest();
+    this.testGreaterThan(0);
+  }
+
+  
+
+  testGreaterThan(val : number) {
+    debugger
+    if (val > 100) {  // Change this line
+      return "Over 100";
+    }
+  
+    if (val > 0) {  // Change this line
+      return "Over 10";
+    }
+  
+    return "10 or Under";
   }
 
   forkJoinTest() {
@@ -44,3 +60,6 @@ export class RendererTestCompComponent implements OnDestroy{
     this.$forkJoinData.unsubscribe();
   }
 }
+
+
+
